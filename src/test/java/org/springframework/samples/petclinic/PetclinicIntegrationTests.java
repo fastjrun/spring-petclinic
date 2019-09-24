@@ -16,17 +16,16 @@
 
 package org.springframework.samples.petclinic;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.samples.petclinic.vet.VetRepository;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
+import org.testng.annotations.Test;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
-public class PetclinicIntegrationTests {
+public class PetclinicIntegrationTests extends AbstractTestNGSpringContextTests {
 
     @Autowired
     private VetRepository vets;

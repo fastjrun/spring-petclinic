@@ -22,11 +22,11 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
@@ -36,15 +36,14 @@ import static org.mockito.BDDMockito.given;
  *
  * @author Colin But
  */
-@RunWith(MockitoJUnitRunner.class)
-public class PetTypeFormatterTests {
+public class PetTypeFormatterTests extends AbstractTestNGSpringContextTests {
 
     @Mock
     private PetRepository pets;
 
     private PetTypeFormatter petTypeFormatter;
 
-    @Before
+    @BeforeClass
     public void setup() {
         this.petTypeFormatter = new PetTypeFormatter(pets);
     }
@@ -64,7 +63,7 @@ public class PetTypeFormatterTests {
         assertThat(petType.getName()).isEqualTo("Bird");
     }
 
-    @Test(expected = ParseException.class)
+    @Test(expectedExceptions = ParseException.class)
     public void shouldThrowParseException() throws ParseException {
         given(this.pets.findPetTypes()).willReturn(makePetTypes());
         petTypeFormatter.parse("Fish", Locale.ENGLISH);

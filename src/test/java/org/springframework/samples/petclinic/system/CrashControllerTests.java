@@ -16,14 +16,13 @@
 
 package org.springframework.samples.petclinic.system;
 
-import org.junit.Ignore;
-import org.junit.Test;
-import org.junit.runner.RunWith;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.test.web.servlet.MockMvc;
+import org.testng.annotations.Test;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
@@ -36,11 +35,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  *
  * @author Colin But
  */
-@RunWith(SpringRunner.class)
 // Waiting https://github.com/spring-projects/spring-boot/issues/5574
-@Ignore
 @WebMvcTest(controllers = CrashController.class)
-public class CrashControllerTests {
+public class CrashControllerTests extends AbstractTestNGSpringContextTests {
 
     @Autowired
     private MockMvc mockMvc;
