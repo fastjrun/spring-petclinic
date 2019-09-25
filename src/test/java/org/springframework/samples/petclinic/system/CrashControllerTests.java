@@ -42,7 +42,7 @@ public class CrashControllerTests extends AbstractTestNGSpringContextTests {
     @Autowired
     private MockMvc mockMvc;
 
-    @Test
+    @Test(enabled = false)
     public void testTriggerException() throws Exception {
         mockMvc.perform(get("/oups")).andExpect(view().name("exception"))
                 .andExpect(model().attributeExists("exception"))
